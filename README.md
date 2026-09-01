@@ -15,3 +15,9 @@ LocalGuide is a platform designed to help travelers and new residents to an area
     2. View available services - The user will have two ways to utilize and search for available services. After inputing their location, The activities and locations that providers are offering guidance on will be displayed, and the user can utilize a search bar feature to look for their desired destination. If what they are looking for is not offered, they can make a forum post to recruit a guide that would be willing to take up their request.
     3. Subscribe to available services - Users will be able to subscribe to specific guides, locations or activites to keep informed on what new services their chosen guides are providing, or news on upcoming events or developments related to the activities and locations they are interested in.
     4. Users will be able to write reviews specifically for guides that offer their services on LocalGuide. The reviews will be tied to the guide's profile for other users to see.
+
+2. Provider:
+    1. Create/modify/remove provider profile - Register as a provider, express details about the accomodations they provide, and present a list of sites they tour around.
+    2. Create services - Publish guide dates and time slots.
+    3. View customer statistics -  View cancelation rate, and statistics on which type of tours are booked more frequently.
+    4. Reply to reviews - Respond to feedback from customers.
