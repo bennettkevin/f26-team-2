@@ -1,5 +1,5 @@
 ## Title
-> Your project title
+> LocalGuide
 
 ## Team Members
 > Kevin Bennett
