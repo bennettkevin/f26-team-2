@@ -49,14 +49,26 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     And   <Utilize the app's services>
   ```
 
-- **US‑2 — <short title>**  
-  _Story:_ As a customer, I want … so that …  
+- **US‑2 — <View available services>**  
+  _Story:_ As a customer, I want to view available guides and activities, so that I can see what services are actually at my disposal. 
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: <Navigate available listings>
+    Given <I am registered as a customer>
+    When  <I search the app>
+    Then  <I will see what I can do in the area>
+    And   <Who can guide me>
+  ```
+
+  **US‑3 — <Subscribe to guides, locations, and activities>**  
+  _Story:_ As a customer, I want to view available guides and activities, so that I can see what services are actually at my disposal. 
+  _Acceptance:_
+  ```gherkin
+  Scenario: <Navigate available listings>
+    Given <I am registered as a customer>
+    When  <I search the app>
+    Then  <I will see what I can do in the area>
+    And   <Who can guide me>
   ```
 
 ### 2.2 Provider Stories
