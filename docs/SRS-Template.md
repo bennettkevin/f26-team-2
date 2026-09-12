@@ -61,14 +61,13 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
   ```
 
   **US‑3 — <Subscribe to guides, locations, and activities>**  
-  _Story:_ As a customer, I want to view available guides and activities, so that I can see what services are actually at my disposal. 
+  _Story:_ As a customer, I want to subscribe to guides, activities, and locations, so that I can be consistently updated on news related to my subscriptions. 
   _Acceptance:_
   ```gherkin
-  Scenario: <Navigate available listings>
-    Given <I am registered as a customer>
-    When  <I search the app>
-    Then  <I will see what I can do in the area>
-    And   <Who can guide me>
+  Scenario: <Subscribe to topics and guides>
+    Given <There are guides, activities, and locations I want stay informed on>
+    When  <I subscribe to one of these>
+    Then  <I will know when there are new developments regarding my subscriptions>
   ```
 
 ### 2.2 Provider Stories
