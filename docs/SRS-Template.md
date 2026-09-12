@@ -70,6 +70,16 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  <I will know when there are new developments regarding my subscriptions>
   ```
 
+  **US‑4 — <Review providers>**  
+  _Story:_ As a customer, I want to be able to leave reviews on providers' profiles, so that when I have critique to deliver, I can let the provider and other customers know. 
+  _Acceptance:_
+  ```gherkin
+  Scenario: <Leave a review on a provider's profile>
+    Given <I want to review a provider's services>
+    When  <I write a review on a provider's profile>
+    Then  <My review will appear on the provider's page and other customers can see it>
+  ```
+
 ### 2.2 Provider Stories
 - **US-20 — <short title>**  
   _Story:_ As a provider, I want … so that …  
