@@ -38,14 +38,15 @@
 Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`.** Each story includes at least one **Given/When/Then** scenario.
 
 ### 2.1 Customer Stories
-- **US‑1 — <short title>**  
-  _Story:_ As a customer, I want … so that …  
+- **US‑1 — <Register an accout>**  
+  _Story:_ As a customer, I want to register an account so that I can utilize the services provided.
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: <Register with email>
+    Given <I do not already have an account>
+    When  <I provide a valid email>
+    Then  <I should have an account and profile>
+    And   <Utilize the app's services>
   ```
 
 - **US‑2 — <short title>**  
