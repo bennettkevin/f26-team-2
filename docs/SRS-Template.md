@@ -81,24 +81,42 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
   ```
 
 ### 2.2 Provider Stories
-- **US-20 — <short title>**  
-  _Story:_ As a provider, I want … so that …  
+- **US-5 — Register an account**  
+  _Story:_ As a provider, I want to register an account, so that I can find new customers.  
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: Register an account.
+    Given I do not have an account.
+    When  I provide new account details.
+    Then  I should have a registered account.
   ```
 
-- **US-21 — <short title>**  
-  _Story:_ As a provider, I want … so that …  
+- **US-6 — Create guide services**  
+  _Story:_ As a provider, I want to create services, so that customers know which locations and activities I tour.  
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: Creating a service
+    Given I need services to begin generating customers.
+    When  I provide service details.
+    Then  I will have a service offered for customers.
+  ```
+- **US-7 — Service Statistics**  
+  _Story:_ As a provider, I want to view which of my services are booked most frequently., so that I can decide where to focus effort in the future.
+  _Acceptance:_
+  ```gherkin
+  Scenario: I need to view services to decide what to focus more time on.
+    Given I have services being offered.
+    When  I have performed a service and want to see how many of each.
+    Then  I will view the statistics on which services are booked most frequently.
+  ```
+  - **US-8 — Interact with customer reviews**  
+  _Story:_ As a provider, I want to interact with customer reviews, so that I can improve the guide experience.  
+  _Acceptance:_
+  ```gherkin
+  Scenario: View and responding to customer reviews.
+    Given I want customers to enjoy the experience.
+    When  I view customer interaction with my services.
+    Then  I will be able to respond to reviews.
   ```
 
 ### 2.3 SysAdmin Stories
