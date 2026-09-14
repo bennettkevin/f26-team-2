@@ -38,24 +38,46 @@
 Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`.** Each story includes at least one **Given/When/Then** scenario.
 
 ### 2.1 Customer Stories
-- **US‑1 — <short title>**  
-  _Story:_ As a customer, I want … so that …  
+- **US‑1 — <Register an accout>**  
+  _Story:_ As a customer, I want to register an account so that I can utilize the services provided.
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: <Register with email>
+    Given <I do not already have an account>
+    When  <I provide a valid email>
+    Then  <I should have an account and profile>
+    And   <Utilize the app's services>
   ```
 
-- **US‑2 — <short title>**  
-  _Story:_ As a customer, I want … so that …  
+- **US‑2 — <View available services>**  
+  _Story:_ As a customer, I want to view available guides and activities, so that I can see what services are actually at my disposal. 
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: <Navigate available listings>
+    Given <I am registered as a customer>
+    When  <I search the app>
+    Then  <I will see what I can do in the area>
+    And   <Who can guide me>
+  ```
+
+  **US‑3 — <Subscribe to guides, locations, and activities>**  
+  _Story:_ As a customer, I want to subscribe to guides, activities, and locations, so that I can be consistently updated on news related to my subscriptions. 
+  _Acceptance:_
+  ```gherkin
+  Scenario: <Subscribe to topics and guides>
+    Given <There are guides, activities, and locations I want stay informed on>
+    When  <I subscribe to one of these>
+    Then  <I will know when there are new developments regarding my subscriptions>
+  ```
+
+  **US‑4 — <Review providers>**  
+  _Story:_ As a customer, I want to be able to leave reviews on providers' profiles, so that when I have critique to deliver, I can let the provider and other customers know. 
+  _Acceptance:_
+  ```gherkin
+  Scenario: <Leave a review on a provider's profile>
+    Given <I want to review a provider's services>
+    When  <I write a review on a provider's profile>
+    Then  <My review will appear on the provider's page and other customers can see it>
   ```
 
 ### 2.2 Provider Stories
