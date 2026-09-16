@@ -124,11 +124,11 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
 
 ---
 
-## 3. Non‑Functional Requirements (make them measurable)
-- **Performance:** description 
-- **Availability/Reliability:** description
-- **Security/Privacy:** description
-- **Usability:** description
+## 3. Non‑Functional Requirements
+- **Performance:** Customers appointment requests should reach their chosen guide in <3 seconds 99% of the time.
+- **Availability/Reliability:** The dashboard should be viewable and updating constantly 99.5% of the time.
+- **Security/Privacy:** Customer and guide accounts should be secured through security questions, and their data should enjoy the privleges of encryption.
+- **Usability:** Customers and guides should be faced with an interface that is self-explanatory, and makes them proficient at using the application within 10 minutes after creating their respective accounts.
 
 ---
 
