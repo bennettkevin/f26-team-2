@@ -13,8 +13,8 @@
 **Vision.** One or two sentences: who this is for, the core problem, and the outcome.
 
 **Glossary** Terms used in the project
-- **Term 1:** description.
-- **Term 2:** description
+- **Services:** Refers to providing customers with the ability to view locations and activities, and the ability to book appointments with guides on the application.
+- **Activities:** Refers to the forms of recreation that the customer can engage in after finding a guide. Examples include touring a new location, or playing a new sport.
 
 **Primary Users / Roles.**
 - **Customer (e.g., Student/Patient/Pet Owner/etc. )** — 1 line goal statement.
@@ -38,7 +38,7 @@
 Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`.** Each story includes at least one **Given/When/Then** scenario.
 
 ### 2.1 Customer Stories
-- **US‑1 — <Register an accout>**  
+- **US‑1 — <Create an accout>**  
   _Story:_ As a customer, I want to register an account so that I can utilize the services provided.
   _Acceptance:_
   ```gherkin
@@ -49,7 +49,7 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     And   <Utilize the app's services>
   ```
 
-- **US‑2 — <View available services>**  
+- **US‑2 — <Browse available services>**  
   _Story:_ As a customer, I want to view available guides and activities, so that I can see what services are actually at my disposal. 
   _Acceptance:_
   ```gherkin
