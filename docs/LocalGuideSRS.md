@@ -17,7 +17,7 @@
 - **Activities:** Refers to the forms of recreation that the customer can engage in after finding a guide. Examples include touring a new location, or playing a new sport.
 
 **Primary Users / Roles.**
-- **Customer (e.g., Student/Patient/Pet Owner/etc. )** — 1 line goal statement.
+- **Customer** — Customers should be able to see what activities are available in their local area, and find locals that can guide them through said activities.
 - **Provider (e.g., Teacher/Doctor/Pet Sitter/etc. )** — 1 line goal statement.
 - **SysAdmin (optional)** — 1 line goal statement.
 
