@@ -27,8 +27,8 @@
 - <capability 3>
 
 **Out of scope (deferred).**
-- <deferred 1>
-- <deferred 2>
+- <deferred 1: Give customers the ability to post requests for guides for activities that are not currently listed.>
+- <deferred 2: Give customers and guides the ability to report malicious and dangerous behavior exhibited by a customer or guide.>
 
 > This document is **requirements‑level** and solution‑neutral; design decisions (UI layouts, API endpoints, schemas) are documented separately.
 
