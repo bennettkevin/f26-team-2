@@ -1,9 +1,9 @@
 
 # Requirements – Starter Template
 
-**Project Name:** Your App Name \
-**Team:** Names and roles \
-**Course:** CSC 340\
+**Project Name:** LocalGuide \
+**Team:** Kevin (Provider) Justice (Customer) \
+**Course:** CSC 340 \
 **Version:** 1.0\
 **Date:** 2026-08-25
 
