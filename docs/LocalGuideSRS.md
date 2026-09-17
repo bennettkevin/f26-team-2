@@ -36,7 +36,6 @@
 ---
 
 ## 2. Functional Requirements (User Stories)
-Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`.** Each story includes at least one **Given/When/Then** scenario.
 
 ### 2.1 Customer Stories
 - **US‑1 — <Create an accout>**  
