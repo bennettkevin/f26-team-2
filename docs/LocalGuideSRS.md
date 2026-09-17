@@ -1,5 +1,5 @@
 
-# Requirements – Starter Template
+# Requirements
 
 **Project Name:** LocalGuide \
 **Team:** Kevin (Provider) Justice (Customer) \
