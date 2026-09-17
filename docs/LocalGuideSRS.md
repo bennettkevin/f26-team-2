@@ -10,7 +10,7 @@
 ---
 
 ## 1. Overview
-**Vision.** One or two sentences: who this is for, the core problem, and the outcome.
+**Vision.** LocalGuides is for people moving to, or exploring, a new area; and providers to offer services related to their area of expertise. Customers will have the ability to search for guides in the area that they are going, and find the right match based on their specific interests. Providers will be able to offer these guide services to gain customer base and show the history and fun associated with their area.
 
 **Glossary** Terms used in the project
 - **Services:** Refers to providing customers with the ability to view locations and activities, and the ability to book appointments with guides on the application.
@@ -18,13 +18,14 @@
 
 **Primary Users / Roles.**
 - **Customer** — Customers should be able to see what activities are available in their local area, and find locals that can guide them through said activities.
-- **Provider (e.g., Teacher/Doctor/Pet Sitter/etc. )** — 1 line goal statement.
-- **SysAdmin (optional)** — 1 line goal statement.
+- **Provider (e.g., Teacher/Doctor/Pet Sitter/etc. )** — Providers should be able to provide activities and guide services for customers.
 
 **Scope (this semester).**
-- <capability 1>
-- <capability 2>
-- <capability 3>
+- Users can register profiles.
+- Customers may search for guide services that fit their needs.
+- Customers can book guide services.
+- Providers can offer guide services.
+- Reviews for guide services.
 
 **Out of scope (deferred).**
 - <deferred 1: Give customers the ability to post requests for guides for activities that are not currently listed.>
@@ -119,27 +120,6 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
     Then  I will be able to respond to reviews.
   ```
 
-### 2.3 SysAdmin Stories
-- **US‑30 — <short title>**  
-  _Story:_ As a sysadmin, I want … so that …  
-  _Acceptance:_
-  ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
-  ```
-
-- **US‑31 — <short title>**  
-  _Story:_ As a sysadmin, I want … so that …  
-  _Acceptance:_
-  ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
-  ```
-
 ---
 
 ## 3. Non‑Functional Requirements
@@ -151,7 +131,11 @@ Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`
 ---
 
 ## 4. Assumptions, Constraints, and Policies
-- list any rules, policies, assumptions, etc.
+- Modern Browser will be used.
+- Customers have knowledge of where they are looking for services. (No "suggest locations" feature planned.)
+- Providers have knowledge of locations they are offering services for. (No features for provider L&D planned.)
+- Compute and data retrieval will depend on 3rd party services.
+- Using Render for deploy there will be a spin-up time upon server inactivity.
 
 ---
 
