@@ -60,4 +60,8 @@ public class GuideService {
         }
         return null;
     }
+
+    public void deleteGuide(Long id) {
+        repository.deleteById(id);
+    }
 }
