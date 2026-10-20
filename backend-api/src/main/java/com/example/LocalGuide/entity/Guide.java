@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -17,30 +18,41 @@ public class Guide {
     private Long id;
 
     @NotBlank 
-    @Column (name = "f_name")
+    @Column (name = "f_name", nullable = false, length = 50)
     private String firstName;
 
     @NotBlank 
-    @Column (name = "l_name")
+    @Column (name = "l_name", nullable = false, length = 50)
     private String lastName;
 
     @NotBlank 
+    @Column (nullable = false, length = 100)
     private String email;
 
     @NotBlank
+    @Column (nullable = false, length = 100)
     private String password;
 
     @NotBlank 
+    @Column (nullable = false, length = 50)
     private String city;
-
+    
     @NotBlank 
+    @Column (nullable = false, length = 50)
     private String state;
 
     @NotBlank
+    @Column (nullable = false, length = 300)
     private String bio;
 
     @Lob
-    private byte[] profile_picture;
+    @Column (name = "profile_picture")
+    private byte[] profilePicture;
+
+    @OneToMany (mappedBy = "guide", orphanRemoval = true, cascade = jakarta.persistence.CascadeType.ALL)
+    @JsonIgnore
+    private List<GuideTour> guideTours;
+
 
     public Guide() {
     }
@@ -106,10 +118,10 @@ public class Guide {
     }
 
     public byte[] getProfilePicture() {
-        return profile_picture;
+        return profilePicture;
     }
 
-    public void setProfilePicture(byte[] profile_picture) {
-        this.profile_picture = profile_picture;
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }
