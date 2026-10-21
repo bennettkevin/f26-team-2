@@ -1,5 +1,11 @@
 package com.example.LocalGuide.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +14,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity 
 @Table (name = "customers")
@@ -26,13 +35,19 @@ public class Customer {
     @Column (name = "l_name")
     private String lastName;
 
-    @NotBlank 
+    @NotBlank
+    @Email
+    @Size(max = 254)
+    @Column(nullable = false, unique = true, length = 254)
     private String email;
 
     @NotBlank 
     private String phoneNumber;
 
     @NotBlank
+    @Size(max = 255)
+    @Column(nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @NotBlank 
@@ -46,6 +61,14 @@ public class Customer {
 
     @Lob
     private byte[] profile_picture;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Booking> bookings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Review> reviews = new ArrayList<>();
 
     public Customer(){
 
@@ -118,5 +141,13 @@ public class Customer {
 
     public void setProfilePicture(byte[] profile_picture) {
         this.profile_picture = profile_picture;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
     }
 }
