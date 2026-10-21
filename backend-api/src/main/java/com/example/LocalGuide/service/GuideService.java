@@ -4,15 +4,22 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.LocalGuide.dto.GuideStatisticsResponse;
 import com.example.LocalGuide.entity.Guide;
 import com.example.LocalGuide.repository.GuideRepository;
+import com.example.LocalGuide.repository.GuideTourRepository;
+import com.example.LocalGuide.repository.TimeslotRepository;
 
 @Service 
 public class GuideService {
     private final GuideRepository repository;
+    private final TimeslotRepository timeslotRepository;
+    private final GuideTourRepository guideTourRepository;
 
-    public GuideService(GuideRepository repository) {
+    public GuideService(GuideRepository repository, TimeslotRepository timeslotRepository, GuideTourRepository guideTourRepository) {
         this.repository = repository;
+        this.timeslotRepository = timeslotRepository;
+        this.guideTourRepository = guideTourRepository;
     }
 
     public List<Guide> getAllGuides() {
@@ -45,6 +52,26 @@ public class GuideService {
         return repository.save(guide);
     }
 
+    public GuideStatisticsResponse getGuideStatistics(Long id) {
+        Guide guide = repository.findById(id).orElse(null);
+        
+        if (guide == null) {
+            return null;
+        }
+
+        int totalTours = guideTourRepository.findByGuideId(guide.getId()).size();
+        int totalTimeslots = guideTourRepository.findByGuideId(guide.getId()).stream()
+                .mapToInt(tour -> tour.getTimeslots().size())
+                .sum();
+        int availableTimeslots = guideTourRepository.findByGuideId(guide.getId()).stream()
+                .flatMap(tour -> tour.getTimeslots().stream())
+                .mapToInt(timeslot -> timeslot.getIsAvailable() ? 1 : 0)
+                .sum();
+        int unavailableTimeslots = totalTimeslots - availableTimeslots;
+
+        return new GuideStatisticsResponse(guide.getId(), guide.getFName(), guide.getLName(), totalTours, totalTimeslots, availableTimeslots, unavailableTimeslots);
+    }
+
     public Guide updateGuide(Long id, Guide updatedGuide) {
         Guide existingGuide = repository.findById(id).orElse(null);
         if (existingGuide != null) {
@@ -59,5 +86,9 @@ public class GuideService {
             return repository.save(existingGuide);
         }
         return null;
+    }
+
+    public void deleteGuide(Long id) {
+        repository.deleteById(id);
     }
 }

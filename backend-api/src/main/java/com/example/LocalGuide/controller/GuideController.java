@@ -3,6 +3,7 @@ package com.example.LocalGuide.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.LocalGuide.dto.GuideStatisticsResponse;
 import com.example.LocalGuide.entity.Guide;
 import com.example.LocalGuide.service.GuideService;
+import com.example.LocalGuide.service.TimeslotService;
 
 import jakarta.validation.Valid;
 
@@ -24,7 +27,7 @@ public class GuideController {
 
     private final GuideService guideService;
 
-    public GuideController(GuideService guideService) {
+    public GuideController(GuideService guideService, TimeslotService timeslotService) {
         this.guideService = guideService;
     }
 
@@ -48,6 +51,11 @@ public class GuideController {
         return guideService.getGuideById(id);
     }
 
+    @GetMapping ("/{id}/statistics")
+    public GuideStatisticsResponse getGuideStatistics(@PathVariable Long id) {
+        return guideService.getGuideStatistics(id);
+    }
+
     @PostMapping 
     @ResponseStatus(HttpStatus.CREATED)
     public Guide createGuide(@Valid @RequestBody Guide guide) {
@@ -57,5 +65,11 @@ public class GuideController {
     @PutMapping ("/{id}") 
     public Guide updateGuide(@PathVariable Long id, @Valid @RequestBody Guide updatedGuide) {
         return guideService.updateGuide(id, updatedGuide);
+    }
+
+    @DeleteMapping ("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteGuide(@PathVariable Long id) {
+        guideService.deleteGuide(id);
     }
 }
