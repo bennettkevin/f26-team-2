@@ -1,11 +1,22 @@
 package com.example.LocalGuide.entity;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-
-import java.util.List;
+import jakarta.validation.constraints.NotNull;
 
 @Entity 
 @Table (name = "guide_tours")
@@ -30,7 +41,7 @@ public class GuideTour {
     @Column (name = "tour_state", nullable = false, length = 100)
     private String tourState;
 
-    @NotBlank 
+    @NotNull
     @Column (name = "tour_price", nullable = false, length = 50)
     private Float tourPrice;
 
@@ -38,7 +49,7 @@ public class GuideTour {
     private String tourImage;
 
     @OneToMany (mappedBy = "guideTour", orphanRemoval = true, cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonIgnore 
     private List<Timeslot> timeslots;
 
     @ManyToOne (fetch = FetchType.LAZY, optional = false)
@@ -103,7 +114,10 @@ public class GuideTour {
     }
 
     public void setTimeslots(List<Timeslot> timeslots) {
-        this.timeslots = timeslots;
+        if (timeslots != null && !timeslots.isEmpty()) {
+            this.timeslots.clear();
+            this.timeslots.addAll(timeslots);
+        }
     }
 
     public Guide getGuide() {

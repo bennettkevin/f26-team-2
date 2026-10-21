@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.LocalGuide.dto.GuideStatisticsResponse;
 import com.example.LocalGuide.entity.Guide;
 import com.example.LocalGuide.service.GuideService;
+import com.example.LocalGuide.service.TimeslotService;
 
 import jakarta.validation.Valid;
 
@@ -25,7 +27,7 @@ public class GuideController {
 
     private final GuideService guideService;
 
-    public GuideController(GuideService guideService) {
+    public GuideController(GuideService guideService, TimeslotService timeslotService) {
         this.guideService = guideService;
     }
 
@@ -47,6 +49,11 @@ public class GuideController {
     @GetMapping ("/{id}") 
     public Guide getGuideById(@PathVariable Long id) {
         return guideService.getGuideById(id);
+    }
+
+    @GetMapping ("/{id}/statistics")
+    public GuideStatisticsResponse getGuideStatistics(@PathVariable Long id) {
+        return guideService.getGuideStatistics(id);
     }
 
     @PostMapping 

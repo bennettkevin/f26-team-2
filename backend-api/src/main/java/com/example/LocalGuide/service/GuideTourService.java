@@ -22,13 +22,13 @@ public class GuideTourService {
 
     public List<GuideTour> searchGuideTours(String name, String city, String state) {
         if (name != null && !name.isEmpty()) {
-            return guideTourRepository.findByNameContainingIgnoreCase(name);
+            return guideTourRepository.findByTourNameContainingIgnoreCase(name);
         } else if (city != null && !city.isEmpty() && state != null && !state.isEmpty()) {
-            return guideTourRepository.findByCityAndStateContainingIgnoreCase(city, state);
+            return guideTourRepository.findByTourCityAndTourStateContainingIgnoreCase(city, state);
         } else if (city != null && !city.isEmpty()) {
-            return guideTourRepository.findByCityContainingIgnoreCase(city);
+            return guideTourRepository.findByTourCityContainingIgnoreCase(city);
         } else if (state != null && !state.isEmpty()) {
-            return guideTourRepository.findByStateContainingIgnoreCase(state);
+            return guideTourRepository.findByTourStateContainingIgnoreCase(state);
         } else {
             return guideTourRepository.findAll();
         }
