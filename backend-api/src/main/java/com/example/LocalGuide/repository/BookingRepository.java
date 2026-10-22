@@ -13,7 +13,19 @@ import java.util.Optional;
 public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findAllByCustomerIdOrderByIdDesc(Long customerId);
 
-    List<Booking> findAllByBooking_Guide_IdOrderByIdDesc(Long trainerId);
+    List<Booking> findAllByGuideIdOrderByIdDesc(Long guideId);
+
+    List<Booking> findByTitleContainingIgnoreCase(String title);
+
+    List<Booking> findByStateContainingIgnoreCase(String state);
+
+    List<Booking> findByLocationContainingIgnoreCase(String location);
+
+    List<Booking> findByCityContainingIgnoreCase(String city);
+
+    List<Booking> findByCityAndStateContainingIgnoreCase(String city, String state);
+
+
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("select booking from Booking booking "

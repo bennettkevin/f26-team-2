@@ -30,6 +30,22 @@ public class Booking {
     @Column(length = 255)
     private String description;
 
+    @Size(max = 255)
+    @Column(length = 255)
+    private String title;
+
+    @Size(max = 255)
+    @Column(length = 255)
+    private String location;
+
+    @Size(max = 255)
+    @Column(length = 255)
+    private String state;
+
+    @Size(max = 255)
+    @Column(length = 255)
+    private String city;
+
     @NotNull
     @Column(nullable = false, updatable = false)
     private LocalDateTime bookingTime;
@@ -38,11 +54,6 @@ public class Booking {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "booking_id", nullable = false)
-    private Booking booking;
 
     @OneToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "timeslot_id", nullable = true, unique = true)
@@ -68,6 +79,38 @@ public class Booking {
         this.description = description;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     public LocalDateTime getBookingTime() {
         return bookingTime;
     }
@@ -82,14 +125,6 @@ public class Booking {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
     }
 
     public Timeslot getTimeslot() {
