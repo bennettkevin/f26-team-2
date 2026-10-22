@@ -10,8 +10,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.OneToOne;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
+//import jakarta.validation.constraints.Max;
+//import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -49,7 +49,7 @@ public class Review {
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "booking_id", nullable = false, unique = true)
-    //private Booking booking;
+    private Booking booking;
 
     public Review() {
     }
