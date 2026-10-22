@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 //import jakarta.validation.constraints.Max;
 //import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -45,6 +46,12 @@ public class Review {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "guide_id", nullable = false)
     private Guide guide;
+
+    @NotNull
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Review")
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Long guideId;
+
 
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)
