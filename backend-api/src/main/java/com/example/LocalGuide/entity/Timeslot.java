@@ -2,6 +2,8 @@ package com.example.LocalGuide.entity;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -9,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -34,6 +37,10 @@ public class Timeslot {
     @ManyToOne (fetch = FetchType.LAZY, optional = false)
     @JoinColumn (name = "guide_tour_id", nullable = false)
     private GuideTour guideTour;
+
+    @OneToOne(mappedBy = "timeslot", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Booking booking;
 
     // Getters and Setters
     public Long getId() {
@@ -70,5 +77,13 @@ public class Timeslot {
 
     public void setGuideTour(GuideTour guideTour) {
         this.guideTour = guideTour;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking){
+        this.booking = booking;
     }
 }

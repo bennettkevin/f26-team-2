@@ -16,14 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.LocalGuide.entity.GuideTour;
 import com.example.LocalGuide.service.GuideTourService;
+import com.example.LocalGuide.service.ReviewService;
+import com.example.LocalGuide.entity.Review;
+
 
 @RestController 
 @RequestMapping ("/api/guidetours")
 public class GuideTourController {
     private final GuideTourService guideTourService;
+    private final ReviewService reviewService;
 
-    public GuideTourController(GuideTourService guideTourService){
+    public GuideTourController(GuideTourService guideTourService, ReviewService reviewService){
         this.guideTourService = guideTourService;
+        this.reviewService = reviewService;
     }
 
     @GetMapping 
@@ -64,6 +69,12 @@ public class GuideTourController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteGuideTour(@PathVariable Long id) {
         guideTourService.deleteGuideTour(id);
+    }
+
+    @PostMapping ("/{id}/reviews")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Review createReview(@RequestBody Review review) {
+        return reviewService.createReview(review);
     }
 
 }
