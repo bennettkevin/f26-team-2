@@ -55,6 +55,11 @@ public class Booking {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "guide_id", nullable = false)
+    private Guide guide;
+
     @OneToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "timeslot_id", nullable = true, unique = true)
     private Timeslot timeslot;
@@ -125,6 +130,14 @@ public class Booking {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Guide getGuide() {
+        return guide;
+    }
+
+    public void setGuide(Guide guide) {
+        this.guide = guide;
     }
 
     public Timeslot getTimeslot() {

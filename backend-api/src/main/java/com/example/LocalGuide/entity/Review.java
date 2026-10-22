@@ -48,9 +48,9 @@ public class Review {
     private Guide guide;
 
     @NotNull
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Review")
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Long guideId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "guide_tour", nullable = false)
+    private GuideTour guideTour;
 
 
     @NotNull
