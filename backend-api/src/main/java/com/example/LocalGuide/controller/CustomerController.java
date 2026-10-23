@@ -18,6 +18,10 @@ import com.example.LocalGuide.entity.Customer;
 import com.example.LocalGuide.service.CustomerService;
 import com.example.LocalGuide.entity.Booking;
 import com.example.LocalGuide.service.BookingService;
+import com.example.LocalGuide.entity.Review;
+import com.example.LocalGuide.service.ReviewService;
+
+
 
 
 
@@ -30,10 +34,12 @@ public class CustomerController {
     
     private final CustomerService customerService;
     private final BookingService bookingService;
+    private final ReviewService reviewService;
 
-    public CustomerController(CustomerService customerService, BookingService bookingService) {
+    public CustomerController(CustomerService customerService, BookingService bookingService, ReviewService reviewService) {
         this.customerService = customerService;
         this.bookingService = bookingService;
+        this.reviewService = reviewService;
     }
 
     @GetMapping 
@@ -78,4 +84,15 @@ public class CustomerController {
         return bookingService.getAllBookings();
     }
 
+    /*
+    @GetMapping ("/customers/{id}/bookings/{bookingId}") 
+    public Booking getBookingById(@PathVariable Long id, Long bookingId) {
+        return bookingService.getBookingById(id, bookingId);
+    }
+        */
+
+    @GetMapping ("/{id}/reviews") 
+    public List<Review> getAllReviews(@PathVariable Long id) {
+        return reviewService.getAllReviews();
+    }
 }

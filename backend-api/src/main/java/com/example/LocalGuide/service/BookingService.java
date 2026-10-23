@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.LocalGuide.entity.Booking;
+import com.example.LocalGuide.entity.Timeslot;
 import com.example.LocalGuide.repository.BookingRepository;
 
 @Service
@@ -36,7 +37,7 @@ private final BookingRepository bookingRepository;
         }
     }
 
-    public Booking getBookingById(Long id) {
+     public Booking getBookingById(Long id) {
         return bookingRepository.findById(id).orElse(null);
     }
 
