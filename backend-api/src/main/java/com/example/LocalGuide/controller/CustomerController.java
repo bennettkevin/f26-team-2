@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.LocalGuide.entity.Customer;
 import com.example.LocalGuide.service.CustomerService;
+import com.example.LocalGuide.entity.Booking;
+import com.example.LocalGuide.service.BookingService;
+
+
 
 import jakarta.validation.Valid;
 
@@ -25,9 +29,11 @@ import jakarta.validation.Valid;
 public class CustomerController {
     
     private final CustomerService customerService;
+    private final BookingService bookingService;
 
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerService customerService, BookingService bookingService) {
         this.customerService = customerService;
+        this.bookingService = bookingService;
     }
 
     @GetMapping 
@@ -65,6 +71,11 @@ public class CustomerController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         customerService.deleteCustomer(id);
+    }
+
+    @GetMapping ("/{id}/bookings") 
+    public List<Booking> getAllBookings(@PathVariable Long id) {
+        return bookingService.getAllBookings();
     }
 
 }
