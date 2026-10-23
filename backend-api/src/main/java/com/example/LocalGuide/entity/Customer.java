@@ -59,8 +59,8 @@ public class Customer {
     @NotBlank
     private String bio;
 
-    @Lob
-    private byte[] profile_picture;
+    @NotBlank
+    private String profile_picture;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
@@ -85,6 +85,14 @@ public class Customer {
     
     public void setFName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getLName() {
@@ -135,11 +143,11 @@ public class Customer {
         this.bio = bio;
     }
 
-    public byte[] getProfilePicture() {
+    public String getProfilePicture() {
         return profile_picture;
     }
 
-    public void setProfilePicture(byte[] profile_picture) {
+    public void setProfilePicture(String profile_picture) {
         this.profile_picture = profile_picture;
     }
 

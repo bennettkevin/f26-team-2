@@ -56,6 +56,7 @@ public class CustomerService {
             existingCustomer.setState(updatedCustomer.getState());
             existingCustomer.setBio(updatedCustomer.getBio());
             existingCustomer.setProfilePicture(updatedCustomer.getProfilePicture());
+            existingCustomer.setPhoneNumber(updatedCustomer.getPhoneNumber());
             return repository.save(existingCustomer);
         }
         return null;
