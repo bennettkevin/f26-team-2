@@ -77,4 +77,9 @@ public class GuideTourController {
         return reviewService.createReview(review);
     }
 
+    @GetMapping ("/{id}/reviews")
+    public List<Review> getGuideTourReviews(@PathVariable Long id){
+        return reviewService.getReviewByGuideTourId(id);
+    }
+
 }
