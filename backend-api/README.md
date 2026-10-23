@@ -2,7 +2,7 @@
 
 # UML Class Diagram
 
-[Class Diagram](../docs/LocalGuides%20UML.png)
+![Class Diagram](../docs/LocalGuides%20UML.png)
 
 # API Overview
 
