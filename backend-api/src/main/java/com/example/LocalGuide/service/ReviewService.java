@@ -33,6 +33,10 @@ public class ReviewService {
         return reviewRepository.findAllByGuideIdOrderByReviewDateDescIdDesc(guideId);
     }
 
+    public List<Review> getReviewByGuideTourId(Long guidTourId) {
+        return reviewRepository.findByGuideTourId(guidTourId);
+    }
+
     public Review getReviewById(Long id) {
         return reviewRepository.findById(id).orElse(null);
     }
