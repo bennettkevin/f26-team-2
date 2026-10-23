@@ -84,12 +84,11 @@ public class CustomerController {
         return bookingService.getAllBookings();
     }
 
-    /*
-    @GetMapping ("/customers/{id}/bookings/{bookingId}") 
-    public Booking getBookingById(@PathVariable Long id, Long bookingId) {
-        return bookingService.getBookingById(id, bookingId);
+    @PostMapping ("/{id}/bookings") 
+    @ResponseStatus(HttpStatus.CREATED)
+    public Booking createBooking(@RequestBody  Booking booking) {
+        return bookingService.createBooking(booking);
     }
-        */
 
     @GetMapping ("/{id}/reviews") 
     public List<Review> getAllReviews(@PathVariable Long id) {
