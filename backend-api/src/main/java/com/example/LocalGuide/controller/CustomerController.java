@@ -3,6 +3,7 @@ package com.example.LocalGuide.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.LocalGuide.entity.Customer;
 import com.example.LocalGuide.service.CustomerService;
+import com.example.LocalGuide.entity.Booking;
+import com.example.LocalGuide.service.BookingService;
+import com.example.LocalGuide.entity.Review;
+import com.example.LocalGuide.service.ReviewService;
+
+
+
+
 
 import jakarta.validation.Valid;
 
@@ -24,9 +33,13 @@ import jakarta.validation.Valid;
 public class CustomerController {
     
     private final CustomerService customerService;
+    private final BookingService bookingService;
+    private final ReviewService reviewService;
 
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerService customerService, BookingService bookingService, ReviewService reviewService) {
         this.customerService = customerService;
+        this.bookingService = bookingService;
+        this.reviewService = reviewService;
     }
 
     @GetMapping 
@@ -60,4 +73,25 @@ public class CustomerController {
         return customerService.updateCustomer(id, updatedCustomer);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
+    }
+
+    @GetMapping ("/{id}/bookings") 
+    public List<Booking> getAllBookings(@PathVariable Long id) {
+        return bookingService.getAllBookings();
+    }
+
+    @PostMapping ("/{id}/bookings") 
+    @ResponseStatus(HttpStatus.CREATED)
+    public Booking createBooking(@RequestBody  Booking booking) {
+        return bookingService.createBooking(booking);
+    }
+
+    @GetMapping ("/{id}/reviews") 
+    public List<Review> getAllReviews(@PathVariable Long id) {
+        return reviewService.getAllReviews();
+    }
 }

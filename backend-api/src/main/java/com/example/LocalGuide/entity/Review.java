@@ -47,16 +47,16 @@ public class Review {
     @JoinColumn(name = "guide_id", nullable = false)
     private Guide guide;
 
-    @NotNull
+    
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "guide_tour", nullable = false)
-    private GuideTour guideTour;
-
+    @JoinColumn(name = "guide_tour_id")
+    private GuideTour guideTourId;
+    
 
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "booking_id", nullable = false, unique = true)
-    private Booking booking;
+    private Booking bookingId;
 
     public Review() {
     }
@@ -107,10 +107,10 @@ public class Review {
     }
 
     public Booking getBooking() {
-        return booking;
+        return bookingId;
     }
 
     public void setBooking(Booking booking) {
-        this.booking = booking;
+        this.bookingId = booking;
     }
 }

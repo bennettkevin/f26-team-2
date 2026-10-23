@@ -6,13 +6,17 @@ import org.springframework.stereotype.Service;
 
 import com.example.LocalGuide.entity.Customer;
 import com.example.LocalGuide.repository.CustomerRepository;
+import com.example.LocalGuide.entity.Booking;
+import com.example.LocalGuide.repository.BookingRepository;
 
 @Service 
 public class CustomerService {
     private final CustomerRepository repository;
+    private final BookingRepository bookingRepository;
 
-    public CustomerService(CustomerRepository repository) {
+    public CustomerService(CustomerRepository repository, BookingRepository bookingRepository) {
         this.repository = repository;
+        this.bookingRepository = bookingRepository;
     }
 
     public List<Customer> getAllCustomers() {
@@ -56,8 +60,17 @@ public class CustomerService {
             existingCustomer.setState(updatedCustomer.getState());
             existingCustomer.setBio(updatedCustomer.getBio());
             existingCustomer.setProfilePicture(updatedCustomer.getProfilePicture());
+            existingCustomer.setPhoneNumber(updatedCustomer.getPhoneNumber());
             return repository.save(existingCustomer);
         }
         return null;
+    }
+
+    public void deleteCustomer(Long id) {
+        repository.deleteById(id);
+    }
+
+    public void getBookings(Long id){
+        bookingRepository.findAllByCustomerIdOrderByIdDesc(id);
     }
 }
