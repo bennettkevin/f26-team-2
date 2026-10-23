@@ -3,6 +3,7 @@ package com.example.LocalGuide.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,6 +59,12 @@ public class CustomerController {
     @PutMapping ("/{id}") 
     public Customer updateCustomer(@PathVariable Long id, @Valid @RequestBody Customer updatedCustomer) {
         return customerService.updateCustomer(id, updatedCustomer);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
     }
 
 }
