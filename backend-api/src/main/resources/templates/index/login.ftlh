@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<#assign pageTitle="Login - Local Guide">
+  <#include "/shared/layout.ftlh">
+  <@page title=pageTitle active="login">
+    <body>
     <div class="container text-center">
   <div class="row">
     <div class="col">
-        <a class="btn btn-primary m-3" href="Customer pages/customer-login.html" role="button">Customer login</a>
+        <a class="btn btn-primary m-3" href="/customers/login" role="button">Customer login</a>
     </div>
-    <div class="col">
-    <a class="btn btn-secondary m-3" href="provider-pages/provider-login.html">Guide login</a>
-    </div>
+   <!-- <div class="col">
+    <a class="btn btn-secondary m-3" href="/providers/login">Guide login</a>
+    </div> -->
   </div>
   <h1>LocalGuide</h1>
   <div class="card background-grey m-3 p-2">
@@ -30,5 +24,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
+  </@page>
 </body>
 </html>
