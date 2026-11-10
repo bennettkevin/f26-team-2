@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>${title} | Local Guide</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/styles.css">
+      <link rel="stylesheet" href="/static/styles.css">
     </head>
 
     <body>
@@ -15,7 +15,9 @@
         <a href="/"> Local Guide</a>
         <nav class="navbar m-3 p-2">
           <a href="/" class="${(active == 'home')?then('active', '')}">Dashboard</a>
+          <#if customer??>
           <a href="/customer/${customer.id}" class="${(active == 'profile')?then('active', '')}">Profile</a>
+          </#if>
         </nav>
       </header>
 
