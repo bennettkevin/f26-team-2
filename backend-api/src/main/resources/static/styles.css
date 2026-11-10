@@ -1,3 +1,14 @@
 .background-grey {
     background-color: #d4d4d4;
 }
+
+.description-box {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    background-color: #343a40;
+}

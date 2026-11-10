@@ -1,11 +1,10 @@
 <#assign pageTitle="Login - Local Guide">
   <#include "/shared/layout.ftlh">
-  <@page title=pageTitle active="login">
     <body>
     <div class="container text-center">
   <div class="row">
     <div class="col">
-        <a class="btn btn-primary m-3" href="/customers/login" role="button">Customer login</a>
+        <a class="btn btn-primary m-3" href="/customer/customer-login" role="button">Customer login</a>
     </div>
    <!-- <div class="col">
     <a class="btn btn-secondary m-3" href="/providers/login">Guide login</a>
@@ -20,8 +19,4 @@
   </div>
 </div>
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
- </@page>

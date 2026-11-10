@@ -1,6 +1,5 @@
 <#assign pageTitle="Customer Registration - Local Guide">
   <#include "/shared/layout.ftlh">
-  <@page title=pageTitle active="customer-registration">
 <body>
     <div class="container">
         <h1>Customer Registration</h1>
@@ -18,4 +17,3 @@
     </div>    
     </div>
 </body>
-  </@page>

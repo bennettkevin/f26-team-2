@@ -1,6 +1,5 @@
-<#assign pageTitle="Customer Login - Local Guide">
+<#assign pageTitle="Customer Edit Profile - Local Guide">
   <#include "/shared/layout.ftlh">
-  <@page title=pageTitle active="customer-login">
 
 <body>
     <h1>${customer.name}</h1>
