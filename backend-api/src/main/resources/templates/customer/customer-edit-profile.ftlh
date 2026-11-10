@@ -1,47 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles.css">
-        <title>Edit Your Profile</title>
-</head>
+<#assign pageTitle="Customer Login - Local Guide">
+  <#include "/shared/layout.ftlh">
+  <@page title=pageTitle active="customer-login">
 
 <body>
-    <nav class="navbar m-3 p-2">
-        <a class="navbar-brand" href="customer-dash.html">Dashboard</a>
-        <a class="navbar-brand" href="customer-subscriptions.html">Bookings</a>
-        <a class="navbar-brand" href="customer-profile.html">Profile</a>
-        <a class="navbar-brand" href="../login.html">Logout</a>    
-</nav>
-    <h1>Clark Kent</h1>
-    <p>Location: Greensboro, NC</p>
+    <h1>${customer.name}</h1>
+    <p>Location: ${customer.location}</p>
     <div class="container">
         <div class="card">
             <h2>Interests</h2>
             <ul>
-                <li>Exploring the wilderness</li>
-                <li>Arcades</li>
-                <li>Pickleball</li>
+                <#list customer.interests as interest>
+                    <li>${interest}</li>
+                </#list>
             </ul>
-            <a class="btn btn-primary" href="change-customer-interests.html">Add/remove interest.</a>
+            <!--<a class="btn btn-primary" href="change-customer-interests.html">Add/remove interest.</a>-->
         </div>
         <div class="card">
             <h2>Bio</h2>
-            <textarea type="text-box" class="form-control" style="height: 100px;">Investigative Journalist at the Daily Bugle, originally from Smallville, Kansas.
-              I didn't get to travel a lot until I was offered my position at the Daily Bugle. While I go get to see a lot of
-              interesting places, it's rare they have anything to do with my hobbies, so I would like to find people to show me
-              what there is to do in Greensboro that align with my interests. I love nature, arcades, and pickle ball..</textarea>
+            <textarea type="text-box" class="form-control" style="height: 100px;">${customer.bio}</textarea>
         </div>
         <div class="card">
             <h2>Contact Information:</h2>
-            <p>Email:<input type="email" class="form-control" value="clark.kent@thedailybugle.com"></input></p>
-            <p>Phone: <input type="tel" class="form-control" value="(987) 654-3210"></input></p>
+            <p>Email:<input type="email" class="form-control" value="${customer.email}"></input></p>
+            <p>Phone: <input type="tel" class="form-control" value="${customer.phone}"></input></p>
         </div>
-        <p>Image link: <input type="url" placeholder="EX: linktonaturepic.com/pretty-flowers.jpeg"> </input></p>
-        <a class="btn btn-secondary" href="customer-profile.html">Save Changes</a>
+        <p>Image link: <input type="url" placeholder="EX: linktonaturepic.com/pretty-flowers.jpeg" value="${customer.imageLink}"> </input></p>
+        <a class="btn btn-secondary" href="/customers/${customer.id}/customer-profile.html">Save Changes</a>
     </div>
 </body>
 </html>

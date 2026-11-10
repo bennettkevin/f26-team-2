@@ -8,7 +8,7 @@
     </div>
     <div class="container">
         <div class="card background-grey m-3 p-2">
-            <h2>Interests</h2>
+           <# <h2>Interests</h2>
             <ul>
                 <li>Exploring the wilderness</li>
                 <li>Arcades</li>
