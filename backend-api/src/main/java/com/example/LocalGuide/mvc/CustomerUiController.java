@@ -22,7 +22,7 @@ public class CustomerUiController {
         this.service = service;
     }
 
-    @GetMapping("/")
+    @GetMapping({"/", "/customers"})
     public String viewLoginPage() {
         return "/index/login";
     }
@@ -33,7 +33,11 @@ public class CustomerUiController {
     }
 
     @GetMapping("/customers/customer-registration")
-    public String viewCustomerRegistrationPage() {
+    public String viewCustomerRegistrationPage(Model model) {
+          Customer customer = new Customer();
+    model.addAttribute("customer", customer);
+    model.addAttribute("formTitle", "Add a Customer");
+    model.addAttribute("formAction", "/customers");
         return "/customer/customer-registration";
     }
 
@@ -50,21 +54,21 @@ public class CustomerUiController {
 
     @GetMapping("/customers/{id}")
     public String viewCustomerProfile(@PathVariable Long id, Model model) {
-       // try {
+       try {
       Customer customer = service.getCustomerById(id);
       model.addAttribute("customer", customer);
       return "/customer/customer-profile";
-    //} catch (RuntimeException exception) {
-    //  model.addAttribute("errorMessage",
-    //      exception.getMessage() == null ? "Customer not found" : exception.getMessage());
-    //  return "/shared/error";
-    //}
+    } catch (RuntimeException exception) {
+      model.addAttribute("errorMessage",
+          exception.getMessage() == null ? "Customer not found" : exception.getMessage());
+      return "/shared/error";
+    }
     }
 
 @PostMapping("/customers")
   public String createCustomer(@Valid @ModelAttribute Customer customer) {
     Customer createdCustomer = service.createCustomer(customer);
-    return "redirect:/customer/" + createdCustomer.getId();
+    return "redirect:/customers/" + createdCustomer.getId();
   }
 
   @GetMapping("/customers/{id}/edit")
@@ -79,13 +83,13 @@ public class CustomerUiController {
   @PostMapping("/customers/{id}")
   public String updateCustomer(@PathVariable Long id, @Valid @ModelAttribute Customer customer) {
     Customer updatedCustomer = service.updateCustomer(id, customer);
-    return "redirect:/customer/" + updatedCustomer.getId();
+    return "redirect:/customers/" + updatedCustomer.getId();
   }
 
   @PostMapping("/customers/{id}/delete")
   public String deleteCustomer(@PathVariable Long id) {
     service.deleteCustomer(id);
-    return "redirect:/";
+    return "redirect:/customers";
   }
 
 

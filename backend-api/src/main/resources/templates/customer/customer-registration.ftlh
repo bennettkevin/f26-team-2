@@ -1,19 +1,17 @@
 <#assign pageTitle="Customer Registration - Local Guide">
   <#include "/shared/layout.ftlh">
-<body>
-    <div class="container">
+    <div class="form-container">
         <h1>Customer Registration</h1>
-        <div class="card background-grey m-3 p-2">
-        <p>First Name: <input type="text" placeholder="EX: Clark"></input> </p>
-        <p>Last Name: <input type="text" placeholder="EX: Kent"></input> </p>
-        <p>State: <input type="text" placeholder="EX: North Carolina"></input> </p>
-        <p>City: <input type="text" placeholder="EX: Greensboro"></input> </p>
-        <p>Email: <input type="email" placeholder="EX: clark.kent@thedailybugle.com"></input> </p>
-        <p>Password: <input type="text" placeholder="EX: password123"></input> </p>
-        <p>Phone: <input type="tel" placeholder="EX: (987) 654-3210"></input> </p>
-        <h2>Bio:</h2>
-        <textarea style="height: 100px;" class="form-control" placeholder="Enter a brief bio about yourself."></textarea>
-        <a class="btn btn-primary" href="/customers/customer-profile">Create Profile</a>
-    </div>    
+        <form action="/customers" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="FName">First Name</label> <input type="text" id="FName" name="FName" required></input>
+        <label for="LName">Last Name</label> <input type="text" id="LName" name="LName" required></input>
+        <label for="state">State</label> <input type="text" id="state" name="state" required></input>
+        <label for="city">City</label> <input type="text" id="city" name="city" required></input>
+        <label for="email">Email</label> <input type="email" id="email" name="email" required></input>
+        <label for="password">Password</label> <input type="text" id="password" name="password" required></input>
+        <label for="phoneNumber">Phone</label> <input type="tel" id="phoneNumber" name="phoneNumber" required></input>
+        <label for="bio">Bio</label><textarea id="bio" name="bio" maxlength="2000" required></textarea>
+        <label for="profilePicture">Profile Picture</label> <input type="text" id="profilePicture" name="profilePicture"></input>
+        <button type="submit" class="btn btn-primary">Create Profile</button>
+        </form>
     </div>
-</body>
