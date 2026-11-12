@@ -31,9 +31,10 @@
 <body>
     <div class="container">
         <h1>Customer Login</h1>
+        <form action="/customers/${customer.id}" method="get"></form>
         <div class="card background-grey m-3 p-2">
-        <p>Email: <input type="email" placeholder="EX: clark.kent@thedailybugle.com"></input> </p>
-        <p>Password: <input type="text" placeholder="EX: password123"></input> </p>
+        <label for="email">Email: </label><input type="email" id="email" required></input> </p>
+        <label for="password">Password: </label><input type="password" id="password" required></input> </p>
         <a class="btn btn-primary" href="/customers/customer-profile">Login</a>
     </div>    
     </div>

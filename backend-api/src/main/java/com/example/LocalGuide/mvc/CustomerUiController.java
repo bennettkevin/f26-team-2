@@ -2,30 +2,60 @@ package com.example.LocalGuide.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import com.example.LocalGuide.service.CustomerService;
+import com.example.LocalGuide.service.GuideTourService;
+import com.example.LocalGuide.service.GuideService;
 import com.example.LocalGuide.entity.Customer;
+import com.example.LocalGuide.entity.GuideTour;
+import com.example.LocalGuide.entity.Guide;
 
 @Controller
 //@RequestMapping("/customer")
 public class CustomerUiController {
 
     private final CustomerService service;
+    private final GuideTourService guideTourService;
+    private final GuideService guideService;
 
-    public CustomerUiController(CustomerService service) {
+    public CustomerUiController(CustomerService service, GuideTourService guideTourService, GuideService guideService) {
         this.service = service;
+        this.guideTourService = guideTourService;
+        this.guideService = guideService;
     }
 
-    @GetMapping({"/", "/customers"})
+    @GetMapping({"/"})
     public String viewLoginPage() {
         return "/index/login";
     }
+
+    @GetMapping("/customers/customer-dash")
+    public String viewCustomerDashboard(@RequestParam(required = false) String tourCity,
+      @RequestParam(required = false) String tourState, Model model) {
+        model.addAttribute("guideTours", guideTourService.searchGuideTours(null, tourCity, tourState));
+        model.addAttribute("tourCity", tourCity == null ? "" : tourCity);
+        model.addAttribute("tourState", tourState == null ? "" : tourState);
+        return "/customer/customer-dash";
+    }
+
+    @GetMapping("/guideTours/{id}")
+  public String details(@PathVariable Long id, Model model) {
+    try {
+      GuideTour guideTour = guideTourService.getGuideTourById(id);
+      model.addAttribute("guideTour", guideTour);
+      return "customer/customer-nature-tour";
+    } catch (RuntimeException exception) {
+      model.addAttribute("errorMessage",
+          exception.getMessage() == null ? "Guide tour not found" : exception.getMessage());
+      return "error";
+    }
+  }
 
     @GetMapping("/customers/customer-login")
     public String viewCustomerLoginPage() {

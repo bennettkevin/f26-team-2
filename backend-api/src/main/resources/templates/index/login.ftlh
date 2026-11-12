@@ -4,7 +4,7 @@
     <div class="container text-center">
   <div class="row">
     <div class="col">
-        <a class="btn btn-primary m-3" href="/customer/customer-login" role="button">Customer login</a>
+        <a class="btn btn-primary m-3" href="/customers/customer-login" role="button">Customer login</a>
     </div>
    <!-- <div class="col">
     <a class="btn btn-secondary m-3" href="/providers/login">Guide login</a>
