@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -49,9 +48,8 @@ public class Guide {
     @Column (nullable = false, length = 300)
     private String bio;
 
-    @Lob
     @Column (name = "profile_picture")
-    private byte[] profilePicture;
+    private String profilePictureUrl;
 
     @OneToMany (mappedBy = "guide", orphanRemoval = true, cascade = jakarta.persistence.CascadeType.ALL)
     @JsonIgnore
@@ -121,11 +119,11 @@ public class Guide {
         this.bio = bio;
     }
 
-    public byte[] getProfilePicture() {
-        return profilePicture;
+    public String getProfilePicture() {
+        return profilePictureUrl;
     }
 
-    public void setProfilePicture(byte[] profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setProfilePicture(String profilePictureUrl) {
+        this.profilePictureUrl = profilePictureUrl;
     }
 }

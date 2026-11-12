@@ -18,6 +18,9 @@
           <#if customer??>
           <a href="/customer/${customer.id}" class="${(active == 'profile')?then('active', '')}">Profile</a>
           </#if>
+          <#if provider??>
+          <a href="/provider/${provider.id}" class="${(active == 'profile')?then('active', '')}">Profile</a>
+          </#if>
         </nav>
       </header>
 
