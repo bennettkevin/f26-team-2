@@ -2,4 +2,4 @@
   <#include "/shared/layout.ftlh">
 <h1>Error</h1>
     <p>${errorMessage!'An error occurred.'} </p>
-    <a href="/">Back to character gallery</a>
+    <a href="/customers/customer-dash">Back to dashboard</a>

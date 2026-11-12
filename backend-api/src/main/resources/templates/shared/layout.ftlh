@@ -14,6 +14,7 @@
         <a href="/"> Local Guide</a>
         <nav class="navbar m-3 p-2">
           <a href="/customers/customer-dash">Dashboard</a>
+          <a href="/customers/customer-profile">Profile</a>
           <a href="/">Logout</a>
         </nav>
       </header>

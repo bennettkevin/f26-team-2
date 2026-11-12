@@ -16,6 +16,7 @@ import com.example.LocalGuide.service.GuideService;
 import com.example.LocalGuide.entity.Customer;
 import com.example.LocalGuide.entity.GuideTour;
 import com.example.LocalGuide.entity.Guide;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 //@RequestMapping("/customer")
@@ -66,9 +67,11 @@ public class CustomerUiController {
 
     
     @PostMapping ("/customers/customer-login")
-    public String handleCustomerLogin(@RequestParam String email, @RequestParam String password, Model model) {
+    public String handleCustomerLogin(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
         try {
             Customer customer = service.authenticateCustomer(email, password);
+            session.setAttribute("userId", customer.getId());
+            session.setAttribute("userRole", "customer");
             return "redirect:/customers/" + customer.getId();
         } catch (RuntimeException exception) {
             model.addAttribute("errorMessage",
@@ -107,7 +110,7 @@ public class CustomerUiController {
     } catch (RuntimeException exception) {
       model.addAttribute("errorMessage",
           exception.getMessage() == null ? "Customer not found" : exception.getMessage());
-      return "./shared/error";
+      return "/shared/error";
     }
     }
 
