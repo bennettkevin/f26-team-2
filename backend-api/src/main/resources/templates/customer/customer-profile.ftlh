@@ -19,5 +19,8 @@
         <div class="actions">
           <a href="/customers/${customer.id}/edit" class="button">Edit Profile</a>
         </div>
+        <div class="actions">
+          <a href="/customers/${customer.id}/delete" class="button">Delete Profile</a>
+        </div>
       </div>
     </div>

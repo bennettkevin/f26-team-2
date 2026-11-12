@@ -89,7 +89,7 @@ public class CustomerUiController {
   @PostMapping("/customers/{id}/delete")
   public String deleteCustomer(@PathVariable Long id) {
     service.deleteCustomer(id);
-    return "redirect:/customers";
+    return "redirect:/customers/customer-registration";
   }
 
 
