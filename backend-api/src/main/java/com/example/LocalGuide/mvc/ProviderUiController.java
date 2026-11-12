@@ -12,6 +12,9 @@ import com.example.LocalGuide.service.GuideService;
 import com.example.LocalGuide.entity.Guide;
 import com.example.LocalGuide.service.GuideTourService;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+import com.example.LocalGuide.entity.GuideTour;
+
 @Controller 
 @RequestMapping("/provider")
 public class ProviderUiController {
@@ -49,8 +52,22 @@ public class ProviderUiController {
         return "provider/provider-registration";
     }
 
+    @GetMapping("/add-tour")
+    public String addTour(HttpSession session, Model model) {
+        Long userId;
+        try {
+        userId = UiSession.requireId(session, "provider");
+        } catch (LoginException e) {
+            model.addAttribute("error", e.getMessage());
+            return "provider/provider-login";
+        }
+        Guide guide = guideService.getGuideById(userId);
+        model.addAttribute("guide", guide);
+        return "provider/add-tour";
+    }
+
     @PostMapping("/register")
-    public String registerSubmit(Guide guide) {
+    public String registerSubmit(@ModelAttribute Guide guide) {
         guideService.createGuide(guide);
 
         return "redirect:/provider/login";
@@ -71,10 +88,26 @@ public class ProviderUiController {
         }
     }
 
+    @PostMapping("/add-tour")
+    // @ModelAttribute can bind form data to a java object. In this case GuideTour.
+    public String addTourSubmit(HttpSession session, @ModelAttribute GuideTour guideTour, Model model) {
+        Long userId;
+        try {
+            userId = UiSession.requireId(session, "provider");
+        } catch (LoginException e) {
+            model.addAttribute("error", e.getMessage());
+            return "provider/provider-login";
+        }
+
+        guideTour.setGuide(guideService.getGuideById(userId));
+        guideTourService.createGuideTour(guideTour);
+
+        return "redirect:/provider/dashboard";
+    }
+
     @GetMapping("/logout")
     public String providerLogout(HttpSession session) {
         session.invalidate();
         return "redirect:/provider/login";
     }
-
 }

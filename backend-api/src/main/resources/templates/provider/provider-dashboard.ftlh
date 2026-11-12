@@ -1,5 +1,5 @@
 <#import "/shared/layout.ftlh" as l>
-    <@l.page title="Provider Login" active="login">
+    <@l.page title="Provider Dashboard" active="dashboard">
         <h1 class="m-3 p-2">Provider Dashboard</h1>
         <div class="card bg-secondary m-3 p-2">
             <h2>Services</h2>

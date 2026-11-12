@@ -13,7 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity 
 @Table (name = "timeslots")
@@ -22,15 +22,15 @@ public class Timeslot {
     @GeneratedValue (strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank 
+    @NotNull
     @Column (name = "start_time", nullable = false, length = 50)
     private LocalDateTime startTime;
 
-    @NotBlank 
+    @NotNull 
     @Column (name = "end_time", nullable = false, length = 50)
     private LocalDateTime endTime;
 
-    @NotBlank 
+    @NotNull 
     @Column (name = "is_available", nullable = false)
     private Boolean isAvailable;
 
