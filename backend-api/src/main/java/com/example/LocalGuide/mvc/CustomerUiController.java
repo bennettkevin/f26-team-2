@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import com.example.LocalGuide.service.CustomerService;
 import com.example.LocalGuide.service.GuideTourService;
+import com.example.LocalGuide.service.NotFoundException;
 import com.example.LocalGuide.service.GuideService;
 import com.example.LocalGuide.entity.Customer;
 import com.example.LocalGuide.entity.GuideTour;
@@ -23,6 +24,7 @@ public class CustomerUiController {
     private final CustomerService service;
     private final GuideTourService guideTourService;
     private final GuideService guideService;
+  
 
     public CustomerUiController(CustomerService service, GuideTourService guideTourService, GuideService guideService) {
         this.service = service;
@@ -62,6 +64,20 @@ public class CustomerUiController {
         return "/customer/customer-login";
     }
 
+    
+    @PostMapping ("/customers/customer-login")
+    public String handleCustomerLogin(@RequestParam String email, @RequestParam String password, Model model) {
+        try {
+            Customer customer = service.authenticateCustomer(email, password);
+            return "redirect:/customers/" + customer.getId();
+        } catch (RuntimeException exception) {
+            model.addAttribute("errorMessage",
+                    exception.getMessage() == null ? "Invalid email or password" : exception.getMessage());
+            return "/customer/customer-login";
+        }
+    }
+      
+
     @GetMapping("/customers/customer-registration")
     public String viewCustomerRegistrationPage(Model model) {
           Customer customer = new Customer();
@@ -91,7 +107,7 @@ public class CustomerUiController {
     } catch (RuntimeException exception) {
       model.addAttribute("errorMessage",
           exception.getMessage() == null ? "Customer not found" : exception.getMessage());
-      return "/shared/error";
+      return "./shared/error";
     }
     }
 
