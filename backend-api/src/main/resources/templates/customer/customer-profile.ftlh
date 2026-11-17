@@ -19,9 +19,15 @@
         <div class="actions">
           <a href="/customers/${customer.id}/edit" class="button">Edit Profile</a>
         </div>
+        <form action="/customers/${customer.id}/delete" method="post"
+                onsubmit="return confirm('Delete your account and all of your services? This cannot be undone.');">
+                <button type="submit" class="btn btn-danger">Delete Account</button>
+            </form>
+        <!--
         <div class="actions">
           <a href="/customers/${customer.id}/delete" class="button">Delete Profile</a>
         </div>
+      -->
       </div>
     </div>
         </@l.page>

@@ -15,9 +15,8 @@
         <a href="/"> Local Guide</a>
         <nav class="navbar m-3 p-2">
           <#if customer??>
-          <a href="/customers/${customer.id}" class="${(active == 'profile')?then('active', '')}">Profile</a>
+          <a href="/customers/${customer.id?c}" class="${(active == 'profile')?then('active', '')}">Profile</a>
           <a href="/customers/customer-dash">Dashboard</a>
-          <a href="/customers/customer-profile">Profile</a>
           <a href="/">Logout</a>
           </#if>
           <#if guide??>
@@ -27,6 +26,7 @@
           <#if !guide?? && !customer??>
           <a href="/provider/login" class="m-3 p-2">Provider Login</a>
           <a class="btn btn-primary m-3" href="/customers/customer-login" role="button">Customer login</a>
+          <a class="btn btn-primary m-3" href="/customers/customer-registration" role="button">Customer registration</a>
           </#if>
         </nav>
       </header>
