@@ -1,4 +1,4 @@
-  <#macro page title active="">
+<#macro page title active="">
     <!DOCTYPE html>
     <html lang="en">
 
@@ -15,17 +15,21 @@
         <a href="/"> Local Guide</a>
         <nav class="navbar m-3 p-2">
           <#if customer??>
-          <a href="/customer/${customer.id}" class="${(active == 'profile')?then('active', '')}">Profile</a>
+          <a href="/customers/${customer.id}" class="${(active == 'profile')?then('active', '')}">Profile</a>
+          <a href="/customers/customer-dash">Dashboard</a>
+          <a href="/customers/customer-profile">Profile</a>
+          <a href="/">Logout</a>
           </#if>
           <#if guide??>
           <a href="/provider/dashboard" class="m-3 p-2">Dashboard</a>
           <a href="/provider/logout" class="m-3 p-2">Logout</a>
-          <#else>
+          </#if>
+          <#if !guide?? && !customer??>
           <a href="/provider/login" class="m-3 p-2">Provider Login</a>
+          <a class="btn btn-primary m-3" href="/customers/customer-login" role="button">Customer login</a>
           </#if>
         </nav>
       </header>
-
       <main>
           <#if message??>
             <p>${message}</p>

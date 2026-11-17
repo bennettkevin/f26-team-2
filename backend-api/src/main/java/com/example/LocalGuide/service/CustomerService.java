@@ -28,9 +28,9 @@ public class CustomerService {
             return repository.findByFirstNameContainingIgnoreCase(f_name);
         } else if (l_name != null && !l_name.isEmpty()) {
             return repository.findByLastNameContainingIgnoreCase(l_name);
-        } else if (email != null && !email.isEmpty()) {
-            return repository.findByEmailContainingIgnoreCase(email);
-        } else if (city != null && !city.isEmpty() && state != null && !state.isEmpty()) {
+        } //else if (email != null && !email.isEmpty()) {
+            //return repository.findByEmailContainingIgnoreCase(email);} 
+            else if (city != null && !city.isEmpty() && state != null && !state.isEmpty()) {
             return repository.findByCityAndStateContainingIgnoreCase(city, state);
         } else if (city != null && !city.isEmpty()) {
             return repository.findByCityContainingIgnoreCase(city);
@@ -69,6 +69,16 @@ public class CustomerService {
     public void deleteCustomer(Long id) {
         repository.deleteById(id);
     }
+
+  
+    public Customer authenticateCustomer(String email, String password) {
+    Customer customer = repository.findByEmailContainingIgnoreCase(email);
+        if (customer == null || !customer.getPassword().equals(password)) {
+            throw new RuntimeException("Invalid email or password");
+        }
+        return customer;
+    }
+        
 
     public void getBookings(Long id){
         bookingRepository.findAllByCustomerIdOrderByIdDesc(id);

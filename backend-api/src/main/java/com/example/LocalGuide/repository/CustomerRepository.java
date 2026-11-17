@@ -1,6 +1,7 @@
 package com.example.LocalGuide.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,7 +13,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     List<Customer> findByLastNameContainingIgnoreCase(String lastName);
 
-    List<Customer> findByEmailContainingIgnoreCase(String email);
+    Customer findByEmailContainingIgnoreCase(String email);
 
     List<Customer> findByCityContainingIgnoreCase(String city);
     
