@@ -1,5 +1,5 @@
-      <#assign pageTitle="Customer Profile - Local Guide">
-      <#include "/shared/layout.ftlh">
+<#import "/shared/layout.ftlh" as l>
+    <@l.page title="Customer Profile" active="profile">
     <div>
       <div>
         <h1>${customer.FName!""} ${customer.LName!""}</h1>
@@ -24,3 +24,4 @@
         </div>
       </div>
     </div>
+        </@l.page>

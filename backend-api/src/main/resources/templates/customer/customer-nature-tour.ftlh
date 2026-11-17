@@ -1,22 +1,24 @@
-<#assign pageTitle="Tour - Local Guide">
-  <#include "/shared/layout.ftlh">
+<#import "/shared/layout.ftlh" as l>
+  <@l.page title="Customer Tour View" active="Customer-Tour-View">
 
-<body>
-<p><a href="/customers/customer-dash">Back to dashboard</a></p>
+    <body>
+      <p><a href="/customers/customer-dash">Back to dashboard</a></p>
 
-    <div>
       <div>
-        <h1>${guideTour.tourName}</h1>
-        <dl>
-          <dt>Tour Description</dt>
-          <dd>${guideTour.tourDescription}</dd>
-          <dt>City</dt>
-          <dd>${guideTour.tourCity}</dd>
-          <dt>State</dt>
-          <dd>${guideTour.tourState}</dd>
-        </dl>
+        <div>
+          <h1>${guideTour.tourName}</h1>
+          <dl>
+            <dt>Tour Description</dt>
+            <dd>${guideTour.tourDescription}</dd>
+            <dt>City</dt>
+            <dd>${guideTour.tourCity}</dd>
+            <dt>State</dt>
+            <dd>${guideTour.tourState}</dd>
+          </dl>
+        </div>
       </div>
-    </div>
 
-</body>
-</html>
+    </body>
+
+    </html>
+  </@l.page>
