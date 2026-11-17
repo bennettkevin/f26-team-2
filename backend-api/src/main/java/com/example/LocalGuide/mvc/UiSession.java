@@ -1,18 +1,21 @@
 package com.example.LocalGuide.mvc;
 
-import com.example.LocalGuide.service.BadRequestException;
+import javax.security.auth.login.LoginException;
+
 import jakarta.servlet.http.HttpSession;
 
+
 final class UiSession {
-    private UiSession() {
+    public UiSession() {
     }
 
-    static Long requireId(HttpSession session, String role) {
+    static Long requireId (HttpSession session, String role) throws LoginException {
         Object id = session.getAttribute("userId");
-        Object currentRole = session.getAttribute("userRole");
+        Object currentRole = session.getAttribute("role");
         if (!(id instanceof Long userId) || !role.equals(currentRole)) {
-            throw new BadRequestException("Please log in to continue.");
+            throw new LoginException("Please log in to continue.");
         }
         return userId;
     }
+
 }
