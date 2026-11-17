@@ -20,6 +20,8 @@
           <#if guide??>
           <a href="/provider/dashboard" class="m-3 p-2">Dashboard</a>
           <a href="/provider/logout" class="m-3 p-2">Logout</a>
+          <#else>
+          <a href="/provider/login" class="m-3 p-2">Provider Login</a>
           </#if>
         </nav>
       </header>

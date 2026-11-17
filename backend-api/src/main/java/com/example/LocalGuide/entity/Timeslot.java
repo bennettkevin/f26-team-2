@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -38,7 +39,7 @@ public class Timeslot {
     @JoinColumn (name = "guide_tour_id", nullable = false)
     private GuideTour guideTour;
 
-    @OneToOne(mappedBy = "timeslot", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "timeslot", fetch = FetchType.LAZY, orphanRemoval=true, cascade=CascadeType.ALL)
     @JsonIgnore
     private Booking booking;
 

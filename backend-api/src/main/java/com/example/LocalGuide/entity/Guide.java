@@ -29,7 +29,7 @@ public class Guide {
     private String lastName;
 
     @NotBlank 
-    @Column (nullable = false, length = 100)
+    @Column (nullable = false, unique=true, length = 100)
     private String email;
 
     @NotBlank
@@ -125,5 +125,13 @@ public class Guide {
 
     public void setProfilePicture(String profilePictureUrl) {
         this.profilePictureUrl = profilePictureUrl;
+    }
+
+    public List<GuideTour> getGuideTours(){
+        return this.guideTours;
+    }
+
+    public void setGuideTours(List<GuideTour> newTours){
+        this.guideTours = newTours;
     }
 }

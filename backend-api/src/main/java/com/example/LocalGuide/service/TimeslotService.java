@@ -27,6 +27,10 @@ public class TimeslotService {
         return repository.findByGuideTourIdAndIsAvailable(guideTourId, false);
     }
 
+    public Timeslot getTimeslotById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
     public Timeslot createTimeslot(Timeslot timeslot) {
         return repository.save(timeslot);
     }
