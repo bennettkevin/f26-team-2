@@ -60,6 +60,7 @@ public class GuideService {
         }
 
         int totalTours = guideTourRepository.findByGuideId(guide.getId()).size();
+        // Calculate total, available, and unavailable timeslots for the guide
         int totalTimeslots = guideTourRepository.findByGuideId(guide.getId()).stream()
                 .mapToInt(tour -> tour.getTimeslots().size())
                 .sum();
@@ -84,6 +85,16 @@ public class GuideService {
             existingGuide.setBio(updatedGuide.getBio());
             existingGuide.setProfilePicture(updatedGuide.getProfilePicture());
             return repository.save(existingGuide);
+        }
+        return null;
+    }
+
+    public Guide guideLogin(String email, String password) {
+        // Get guide by email create stream so we can get the first guide instead of a list.
+        Guide guide = repository.findByEmailIgnoreCase(email).stream().findFirst().orElse(null);
+        
+        if (guide != null && guide.getPassword().equals(password)) {
+            return guide;
         }
         return null;
     }

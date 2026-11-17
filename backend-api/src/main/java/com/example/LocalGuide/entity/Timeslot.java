@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -13,7 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity 
 @Table (name = "timeslots")
@@ -22,15 +23,15 @@ public class Timeslot {
     @GeneratedValue (strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank 
+    @NotNull
     @Column (name = "start_time", nullable = false, length = 50)
     private LocalDateTime startTime;
 
-    @NotBlank 
+    @NotNull 
     @Column (name = "end_time", nullable = false, length = 50)
     private LocalDateTime endTime;
 
-    @NotBlank 
+    @NotNull 
     @Column (name = "is_available", nullable = false)
     private Boolean isAvailable;
 
@@ -38,7 +39,7 @@ public class Timeslot {
     @JoinColumn (name = "guide_tour_id", nullable = false)
     private GuideTour guideTour;
 
-    @OneToOne(mappedBy = "timeslot", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "timeslot", fetch = FetchType.LAZY, orphanRemoval=true, cascade=CascadeType.ALL)
     @JsonIgnore
     private Booking booking;
 
